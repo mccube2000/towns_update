@@ -5,7 +5,10 @@ import time
 import requests
 
 url = "https://earthmc-api.herokuapp.com/towns/"
-file = 'data.json'
+file = 'data.json'  # 数据文件目录
+pause = 10          # 暂停时间
+loop = False        # 是否循环? False or True
+
 
 def read() -> list:
     try:
@@ -42,7 +45,7 @@ if __name__ == '__main__':
     try:
         while True:
             print(ol)
-            new = read()
+            new = update()
             nl = len(new)
             if ol != nl:
                 # dis = [i for i in old if i not in new]
@@ -55,9 +58,12 @@ if __name__ == '__main__':
                         print(f'{i} 创建')
                 old = new
                 ol = len(old)
-            print('sleep')
-            for i in range(10):
-                print('.')
-                time.sleep(1)
-    except:
+            if loop:
+                print('sleep')
+                for i in range(pause):
+                    print('.')
+                    time.sleep(1)
+            else:
+                break
+    finally:
         write(old)
