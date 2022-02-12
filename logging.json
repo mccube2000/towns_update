@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "formatters": {
+    "complete": {
+      "format": "%(asctime)s - %(levelname)s - %(message)s"
+    },
+    "simple": {
+      "format": "%(levelname)s - %(message)s"
+    }
+  },
+  "handlers": {
+    "console": {
+      "class": "logging.StreamHandler",
+      "level": "DEBUG",
+      "formatter": "simple"
+    },
+    "file_info": {
+      "class": "logging.FileHandler",
+      "level": "INFO",
+      "formatter": "complete",
+      "filename": "towns_info.log",
+      "encoding": "utf-8"
+    },
+    "file_warn": {
+      "class": "logging.FileHandler",
+      "level": "WARN",
+      "formatter": "complete",
+      "filename": "towns_warn.log",
+      "encoding": "utf-8"
+    }
+  },
+  "loggers": {
+    "towns": {
+      "level": "DEBUG",
+      "handlers": [
+        "console",
+        "file_info",
+        "file_warn"
+      ],
+      "propagate": false
+    }
+  }
+}
