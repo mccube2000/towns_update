@@ -127,7 +127,7 @@ def update() -> dict:
 
 
 def pos8(data):
-    return [data[0] / 8, data[1] / 8]
+    return [int(data[0] / 8), int(data[1] / 8)]
 
 
 if __name__ == '__main__':
