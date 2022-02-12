@@ -53,7 +53,7 @@ def calc_size(speed: int, is_sp=True) -> str:
 
 def download():
     global retry_count
-    if retry_count >= retry:
+    if retry_count < retry:
         logger.debug('正在获取数据大小......')
         with requests.get(url, timeout=10, stream=True) as req:
             print(req.headers)
