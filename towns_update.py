@@ -56,7 +56,7 @@ def download():
     if retry_count < retry:
         logger.debug('正在获取数据大小......')
         with requests.get(url, timeout=10, stream=True) as req:
-            print(req.headers)
+            # print(req.headers)
             total_size = int(req.headers['content-length'])
             logger.debug(f'数据大小: {calc_size(total_size, False)}')
             # logger.info(f"数据更新日期: {req.headers['Date']}")
